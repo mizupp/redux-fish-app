@@ -23,7 +23,7 @@ const Fish = () => {
     return <>
             <h1>Fish</h1>
             <div className="fish-container">
-                { loading? <em>Loading...</em> : fishList.map((f, i) => <FishCard key={i} data={f}/>)}
+                { loading? <em>Loading yummy fish...</em> : fishList.map((f, i) => <FishCard key={i} data={f}/>)}
             </div>
            </>
 }

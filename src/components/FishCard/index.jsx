@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
 import { ButtonControl } from '..';
+import { useSelector, useDispatch } from "react-redux";
+import { saveFish, forgetFish} from "../../actions"
 
 const FishCard = ({ data }) => {
 
-    const [saved, setSaved] = useState(false)
+    const saved = useSelector(state => state.savedFish.some(f => f["Scientific Name"] == data["Scientific Name"]))
 
+    const dispatch = useDispatch()
     const handleSave = () => {
-        setSaved(prev => !prev);
+        if (saved) {
+            dispatch(forgetFish(data));
+        }else{
+            dispatch(saveFish(data));
+        }
     }
 
     return <div className="fish-card">
